@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理者ログイン - 就労継続支援B型 事前問診管理</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- ログインページ -->
+    <div id="login-page" class="page active">
+        <div class="container">
+            <h1>管理者ログイン</h1>
+            
+            <div class="login-form-container">
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="facility-name">施設名</label>
+                        <input type="text" id="facility-name" required placeholder="施設名を入力">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">パスワード</label>
+                        <input type="password" id="password" required placeholder="パスワードを入力">
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-large">ログイン</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ダッシュボードページ -->
+    <div id="dashboard-page" class="page">
+        <div class="dashboard-header">
+            <h1>事前問診データ管理</h1>
+            <div class="header-buttons">
+                <button class="btn-secondary" onclick="exportPDF()">PDFエクスポート</button>
+                <button class="btn-secondary" onclick="logout()">ログアウト</button>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- 統計情報 -->
+            <div class="stats-container">
+                <div class="stat-card">
+                    <h3>総回答数</h3>
+                    <div class="stat-number" id="total-count">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>今月の回答</h3>
+                    <div class="stat-number" id="monthly-count">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>見学希望</h3>
+                    <div class="stat-number" id="visit-interest-count">0</div>
+                </div>
+            </div>
+
+            <!-- グラフ -->
+            <div class="charts-container">
+                <div class="chart-box">
+                    <h3>障害区分別</h3>
+                    <canvas id="disability-chart"></canvas>
+                </div>
+                <div class="chart-box">
+                    <h3>利用目的別</h3>
+                    <canvas id="purpose-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- フィルター -->
+            <div class="filter-container">
+                <input type="text" id="search-box" placeholder="名前で検索..." onkeyup="filterData()">
+                <select id="disability-filter" onchange="filterData()">
+                    <option value="">全ての障害区分</option>
+                    <option value="身体障害">身体障害</option>
+                    <option value="知的障害">知的障害</option>
+                    <option value="精神障害">精神障害</option>
+                    <option value="発達障害">発達障害</option>
+                </select>
+            </div>
+
+            <!-- データテーブル -->
+            <div class="table-container">
+                <table id="data-table">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>氏名</th>
+                            <th>年齢</th>
+                            <th>障害区分</th>
+                            <th>利用目的</th>
+                            <th>見学希望</th>
+                            <th>登録日時</th>
+                            <th>詳細</th>
+                        </tr>
+                    </thead>
+                    <tbody id="data-table-body">
+                        <!-- データがここに表示されます -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- 詳細モーダル -->
+    <div id="detail-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeDetailModal()">&times;</span>
+            <div id="detail-content"></div>
+        </div>
+    </div>
+
+    <script src="js/admin-dashboard.js"></script>
+</body>
+</html>
