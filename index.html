@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>就労継続支援B型 事前問診フォーム</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- トップページ -->
+    <div id="top-page" class="page active">
+        <div class="container">
+            <h1>就労継続支援B型<br>事前問診フォーム</h1>
+            
+            <div class="intro-text">
+                <p>利用を検討いただき、ありがとうございます。</p>
+                <p>より良い支援を提供するため、事前にいくつか質問にお答えください。</p>
+            </div>
+
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h3>27項目</h3>
+                    <p>必要な情報のみ</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⏱️</div>
+                    <h3>約10分</h3>
+                    <p>簡単に入力</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>安心・安全</h3>
+                    <p>情報を保護</p>
+                </div>
+            </div>
+
+            <button class="btn-primary" onclick="showPage('orientation-page')">問診を開始する</button>
+        </div>
+    </div>
+
+    <!-- オリエンテーション -->
+    <div id="orientation-page" class="page">
+        <div class="container">
+            <h1>問診を始める前に</h1>
+            
+            <div class="orientation-content">
+                <h2>📋 この問診について</h2>
+                <p>全27項目の質問にお答えいただきます。</p>
+                <p>回答内容は、より良い支援計画の作成に活用させていただきます。</p>
+
+                <h2>⏱️ 所要時間</h2>
+                <p>約10分程度で完了します</p>
+
+                <h2>🔒 プライバシー</h2>
+                <p>ご記入いただいた情報は、適切に管理し、支援目的以外には使用いたしません。</p>
+
+                <h2>💡 回答のコツ</h2>
+                <p>正直にお答えください。正解・不正解はありません。</p>
+                <p>わからない項目は「任意」と書かれている場合は空欄でも構いません。</p>
+            </div>
+
+            <button class="btn-primary" onclick="showPage('survey-page')">問診を開始</button>
+        </div>
+    </div>
+
+    <!-- 問診フォームページ -->
+    <div id="survey-page" class="page">
+        <div id="fixed-header">
+            <div id="progress-bar-container">
+                <div id="progress-bar">
+                    <div id="progress-fill"></div>
+                    <div id="progress-percentage">0%</div>
+                </div>
+            </div>
+            
+            <div id="section-header-fixed" class="section-header">
+                <h2>基本情報</h2>
+            </div>
+        </div>
+
+        <div id="survey-content">
+            <div class="container">
+                <form id="survey-form">
+                    <!-- ① 基本情報 -->
+                    <div class="section-container" data-section="基本情報">
+                        <h2>① 基本情報</h2>
+                        
+                        <div class="form-group">
+                            <label for="full-name">お名前 <span class="required">必須</span></label>
+                            <input type="text" id="full-name" name="full-name" required placeholder="山田 太郎">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="furigana">フリガナ <span class="required">必須</span></label>
+                            <input type="text" id="furigana" name="furigana" required placeholder="ヤマダ タロウ">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="age">年齢 <span class="required">必須</span></label>
+                            <input type="number" id="age" name="age" required min="15" max="100" placeholder="25">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">連絡先（電話番号） <span class="required">必須</span></label>
+                            <input type="tel" id="phone" name="phone" required placeholder="090-1234-5678">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">メールアドレス <span class="optional">任意</span></label>
+                            <input type="email" id="email" name="email" placeholder="example@mail.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="residence-area">居住地域（市区町村まで） <span class="required">必須</span></label>
+                            <input type="text" id="residence-area" name="residence-area" required placeholder="東京都渋谷区">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="emergency-contact">緊急連絡先 <span class="optional">任意</span></label>
+                            <input type="text" id="emergency-contact" name="emergency-contact" placeholder="家族の連絡先など">
+                        </div>
+                    </div>
+
+                    <!-- ② 障害・手帳・支援状況 -->
+                    <div class="section-container" data-section="障害・手帳・支援状況">
+                        <h2>② 障害・手帳・支援状況</h2>
+                        
+                        <div class="form-group">
+                            <label>障害の区分 <span class="required">必須</span></label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="disability-type" value="身体障害"> 身体障害</label>
+                                <label><input type="checkbox" name="disability-type" value="知的障害"> 知的障害</label>
+                                <label><input type="checkbox" name="disability-type" value="精神障害"> 精神障害</label>
+                                <label><input type="checkbox" name="disability-type" value="発達障害"> 発達障害</label>
+                                <label><input type="checkbox" name="disability-type" value="その他"> その他</label>
+                            </div>
+                            <input type="text" id="disability-type-other" name="disability-type-other" placeholder="その他の場合、具体的にご記入ください" style="margin-top: 10px;">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="disability-handbook">障害者手帳の有無 <span class="required">必須</span></label>
+                            <select id="disability-handbook" name="disability-handbook" required>
+                                <option value="">選択してください</option>
+                                <option value="あり（身体）">あり（身体障害者手帳）</option>
+                                <option value="あり（療育）">あり（療育手帳）</option>
+                                <option value="あり（精神）">あり（精神障害者保健福祉手帳）</option>
+                                <option value="申請中">申請中</option>
+                                <option value="なし">なし</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="support-classification">支援区分・受給者証の有無 <span class="required">必須</span></label>
+                            <select id="support-classification" name="support-classification" required>
+                                <option value="">選択してください</option>
+                                <option value="あり">あり</option>
+                                <option value="申請予定">申請予定</option>
+                                <option value="未取得（これから相談したい）">未取得（これから相談したい）</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- ③ これまでの利用歴・就労歴 -->
+                    <div class="section-container" data-section="利用歴・就労歴">
+                        <h2>③ これまでの利用歴・就労歴</h2>
+                        
+                        <div class="form-group">
+                            <label for="previous-support-usage">就労継続支援B型・A型・移行支援の利用歴 <span class="required">必須</span></label>
+                            <select id="previous-support-usage" name="previous-support-usage" required onchange="togglePreviousFacilityFields()">
+                                <option value="">選択してください</option>
+                                <option value="あり">あり</option>
+                                <option value="なし">なし</option>
+                            </select>
+                        </div>
+
+                        <div id="previous-facility-fields" style="display: none;">
+                            <div class="form-group">
+                                <label for="previous-facility-name">利用歴がある場合：事業所名</label>
+                                <input type="text" id="previous-facility-name" name="previous-facility-name" placeholder="◯◯事業所">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="previous-usage-period">利用期間</label>
+                                <input type="text" id="previous-usage-period" name="previous-usage-period" placeholder="例: 2年3ヶ月">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="general-employment-experience">一般就労の経験 <span class="required">必須</span></label>
+                            <select id="general-employment-experience" name="general-employment-experience" required onchange="toggleEmploymentFields()">
+                                <option value="">選択してください</option>
+                                <option value="あり">あり</option>
+                                <option value="なし">なし</option>
+                            </select>
+                        </div>
+
+                        <div id="employment-fields" style="display: none;">
+                            <div class="form-group">
+                                <label for="employment-details">業種・期間を教えてください</label>
+                                <textarea id="employment-details" name="employment-details" rows="3" placeholder="例: 製造業で3年間勤務"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ④ 現在の生活・体調リズム -->
+                    <div class="section-container" data-section="生活・体調リズム">
+                        <h2>④ 現在の生活・体調リズム</h2>
+                        
+                        <div class="form-group">
+                            <label for="living-situation">現在の生活状況 <span class="required">必須</span></label>
+                            <select id="living-situation" name="living-situation" required>
+                                <option value="">選択してください</option>
+                                <option value="一人暮らし">一人暮らし</option>
+                                <option value="家族と同居">家族と同居</option>
+                                <option value="その他">その他</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="health-considerations">体調・精神面で配慮が必要なこと <span class="optional">任意</span></label>
+                            <textarea id="health-considerations" name="health-considerations" rows="4" placeholder="ご自由にお書きください"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>通院・服薬の有無 <span class="required">必須</span></label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="medical-visits" value="定期通院あり"> 定期通院あり</label>
+                                <label><input type="checkbox" name="medical-visits" value="服薬あり"> 服薬あり</label>
+                                <label><input type="checkbox" name="medical-visits" value="特になし"> 特になし</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>生活リズム <span class="required">必須</span></label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="daily-rhythm" value="朝起きるのが苦手"> 朝起きるのが苦手</label>
+                                <label><input type="checkbox" name="daily-rhythm" value="日中は安定している"> 日中は安定している</label>
+                                <label><input type="checkbox" name="daily-rhythm" value="疲れやすい"> 疲れやすい</label>
+                                <label><input type="checkbox" name="daily-rhythm" value="波がある"> 波がある</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ⑤ 働き方の希望 -->
+                    <div class="section-container" data-section="働き方の希望">
+                        <h2>⑤ 働き方の希望</h2>
+                        
+                        <div class="form-group">
+                            <label for="desired-work-frequency">週にどのくらい働きたいですか <span class="required">必須</span></label>
+                            <select id="desired-work-frequency" name="desired-work-frequency" required>
+                                <option value="">選択してください</option>
+                                <option value="週1〜2日">週1〜2日</option>
+                                <option value="週3日程度">週3日程度</option>
+                                <option value="週4〜5日">週4〜5日</option>
+                                <option value="相談しながら決めたい">相談しながら決めたい</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="desired-work-hours">1日の作業時間の希望 <span class="required">必須</span></label>
+                            <select id="desired-work-hours" name="desired-work-hours" required>
+                                <option value="">選択してください</option>
+                                <option value="1〜2時間">1〜2時間</option>
+                                <option value="半日">半日</option>
+                                <option value="1日">1日</option>
+                                <option value="体調次第">体調次第</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="work-style-preference">通所型・在宅作業の希望 <span class="required">必須</span></label>
+                            <select id="work-style-preference" name="work-style-preference" required>
+                                <option value="">選択してください</option>
+                                <option value="通所希望">通所希望</option>
+                                <option value="在宅希望">在宅希望</option>
+                                <option value="併用したい">併用したい</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- ⑥ やってみたい仕事・得意なこと -->
+                    <div class="section-container" data-section="興味・得意分野">
+                        <h2>⑥ やってみたい仕事・得意なこと</h2>
+                        
+                        <div class="form-group">
+                            <label>興味のある作業（複数選択可） <span class="required">必須</span></label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="interested-work" value="Web制作・デザイン"> Web制作・デザイン</label>
+                                <label><input type="checkbox" name="interested-work" value="データ入力"> データ入力</label>
+                                <label><input type="checkbox" name="interested-work" value="PC作業"> PC作業</label>
+                                <label><input type="checkbox" name="interested-work" value="AI・ITツール"> AI・ITツール</label>
+                                <label><input type="checkbox" name="interested-work" value="軽作業"> 軽作業</label>
+                                <label><input type="checkbox" name="interested-work" value="その他"> その他</label>
+                            </div>
+                            <input type="text" id="interested-work-other" name="interested-work-other" placeholder="その他の場合、具体的にご記入ください" style="margin-top: 10px;">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="strengths">得意・好きなこと <span class="optional">任意</span></label>
+                            <textarea id="strengths" name="strengths" rows="4" placeholder="ご自由にお書きください"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="weaknesses">苦手・避けたいこと <span class="optional">任意</span></label>
+                            <textarea id="weaknesses" name="weaknesses" rows="4" placeholder="ご自由にお書きください"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- ⑦ 目的・ゴールの確認 -->
+                    <div class="section-container" data-section="目的・ゴール">
+                        <h2>⑦ 目的・ゴールの確認</h2>
+                        
+                        <div class="form-group">
+                            <label>事業所を利用したい目的はどれに近いですか（複数選択可） <span class="required">必須</span></label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="usage-purpose" value="工賃を少しでも稼ぎたい"> 工賃を少しでも稼ぎたい</label>
+                                <label><input type="checkbox" name="usage-purpose" value="働くリズムを整えたい"> 働くリズムを整えたい</label>
+                                <label><input type="checkbox" name="usage-purpose" value="社会に出る練習がしたい"> 社会に出る練習がしたい</label>
+                                <label><input type="checkbox" name="usage-purpose" value="将来の一般就労を目指したい"> 将来の一般就労を目指したい</label>
+                                <label><input type="checkbox" name="usage-purpose" value="面接・就職活動の練習がしたい"> 面接・就職活動の練習がしたい</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="interview-support-interest">面接対策・履歴書作成のサポートについて <span class="required">必須</span></label>
+                            <select id="interview-support-interest" name="interview-support-interest" required>
+                                <option value="">選択してください</option>
+                                <option value="ぜひ受けたい">ぜひ受けたい</option>
+                                <option value="興味がある">興味がある</option>
+                                <option value="今は考えていない">今は考えていない</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- ⑧ コミュニケーション・配慮事項 -->
+                    <div class="section-container" data-section="コミュニケーション">
+                        <h2>⑧ コミュニケーション・配慮事項</h2>
+                        
+                        <div class="form-group">
+                            <label>人との関わりについて <span class="required">必須</span></label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="communication-preference" value="少人数なら大丈夫"> 少人数なら大丈夫</label>
+                                <label><input type="checkbox" name="communication-preference" value="静かな環境が良い"> 静かな環境が良い</label>
+                                <label><input type="checkbox" name="communication-preference" value="サポートがあれば安心"> サポートがあれば安心</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="support-notes">支援員に知っておいてほしいこと <span class="optional">任意</span></label>
+                            <textarea id="support-notes" name="support-notes" rows="4" placeholder="ご自由にお書きください"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- ⑨ 最後の確認 -->
+                    <div class="section-container" data-section="最後の確認">
+                        <h2>⑨ 最後の確認</h2>
+                        
+                        <div class="form-group">
+                            <label for="trial-visit-interest">見学・体験利用の希望 <span class="required">必須</span></label>
+                            <select id="trial-visit-interest" name="trial-visit-interest" required>
+                                <option value="">選択してください</option>
+                                <option value="すぐにしたい">すぐにしたい</option>
+                                <option value="まずは相談したい">まずは相談したい</option>
+                                <option value="未定">未定</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="additional-comments">その他、事前に伝えておきたいこと <span class="optional">任意</span></label>
+                            <textarea id="additional-comments" name="additional-comments" rows="4" placeholder="ご自由にお書きください"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="submit-container">
+                        <button type="submit" class="btn-primary btn-large">送信する</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 完了ページ -->
+    <div id="complete-page" class="page">
+        <div class="container">
+            <div class="complete-message">
+                <div class="complete-icon">✓</div>
+                <h1>送信完了</h1>
+                <p>事前問診にご回答いただき、ありがとうございました。</p>
+                <p>担当者より改めてご連絡させていただきます。</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
